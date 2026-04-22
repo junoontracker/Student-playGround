@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background: radial-gradient(circle at top, #18181b 0%, #09090b 100%);
+  background-attachment: fixed;
+}
+
+.markdown-body {
+  line-height: 1.6;
+}
+.markdown-body p {
+  margin-bottom: 0.5em;
+}
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-bottom: 0.5em;
+}
+.markdown-body li {
+  margin-bottom: 0.25em;
+}
+.markdown-body strong {
+  color: #fff;
+  font-weight: 700;
+}
