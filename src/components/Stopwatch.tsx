@@ -44,13 +44,13 @@ export function Stopwatch() {
             isActive ? 'bg-amber-500/20 text-amber-500 border border-amber-500/50' : 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
           }`}
         >
-          {isActive ? 'Pause' : 'Start'}
+          {isActive ? 'Roko' : 'Shuru Kar'}
         </button>
         <button 
           onClick={reset}
           className="px-4 py-2 rounded-lg font-bold text-sm bg-red-500/10 text-red-500 border border-red-500/30 flex items-center gap-1"
         >
-          <Square size={14} /> Reset
+          <Square size={14} /> Zero Kar
         </button>
       </div>
     </div>

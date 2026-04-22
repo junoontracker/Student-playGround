@@ -9,7 +9,7 @@ export function Header() {
   const rank = RANKS[Math.min(lvl - 1, RANKS.length - 1)];
 
   const hr = new Date().getHours();
-  const greet = hr < 12 ? "Good Morning" : hr < 18 ? "Good Afternoon" : "Good Evening";
+  const greet = hr < 12 ? "Subah Ho Gayi" : hr < 18 ? "Dopahar" : "Shaam Ho Gayi";
 
   return (
     <div className="flex justify-between items-center p-4 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50 border-b border-zinc-800 shadow-lg">

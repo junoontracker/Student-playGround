@@ -9,9 +9,9 @@ export function BottomNav() {
 
   const navItems: { id: Tab; icon: React.ReactNode; label: string }[] = [
     { id: 'home', icon: <Home size={24} />, label: 'Home' },
-    { id: 'log', icon: <Edit3 size={24} />, label: 'Log' },
-    { id: 'library', icon: <BookOpen size={24} />, label: 'Library' },
-    { id: 'stats', icon: <BarChart2 size={24} />, label: 'Stats' },
+    { id: 'log', icon: <Edit3 size={24} />, label: 'Hisab' },
+    { id: 'library', icon: <BookOpen size={24} />, label: 'Kitaabein' },
+    { id: 'stats', icon: <BarChart2 size={24} />, label: 'Stat' },
     { id: 'profile', icon: <User size={24} />, label: 'Profile' },
   ];
 

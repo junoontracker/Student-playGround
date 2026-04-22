@@ -11,7 +11,7 @@ export function StatsTab() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleAnalyze = async () => {
-    if (logs.length === 0) return alert("No logs to analyze!");
+    if (logs.length === 0) return alert("Koi data hi nahi hai analyze karne ko!");
     setIsAnalyzing(true);
     try {
       const recent = logs.slice(0, 7);
@@ -19,7 +19,7 @@ export function StatsTab() {
       const reply = await analyzeStats(summary);
       setAiAnalysis(reply);
     } catch (e) {
-      setAiAnalysis("Analysis failed. Try again.");
+      setAiAnalysis("Analyze nahi hua, thodi der baad dekh.");
     } finally {
       setIsAnalyzing(false);
     }
@@ -36,14 +36,14 @@ export function StatsTab() {
       <div className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 shadow-lg">
         <div className="flex justify-between items-center mb-3">
           <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest flex items-center gap-2">
-            <Sparkles size={14} className="text-emerald-400" /> AI Progress Report
+            <Sparkles size={14} className="text-emerald-400" /> Padhai Ki Progress
           </span>
           <button 
             onClick={handleAnalyze} 
             disabled={isAnalyzing}
             className="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs px-3 py-1.5 rounded-lg font-bold flex items-center gap-1 hover:bg-emerald-600/30 transition-colors disabled:opacity-50"
           >
-            {isAnalyzing ? 'Analyzing...' : 'Analyze'}
+            {isAnalyzing ? 'Chal raha hai...' : 'Bata Kaisa Chal Raha'}
           </button>
         </div>
         {aiAnalysis ? (
@@ -52,27 +52,27 @@ export function StatsTab() {
           </div>
         ) : (
           <div className="text-sm text-zinc-500 italic text-center py-4">
-            Click analyze to get deep insights on your recent study patterns.
+            Analyze click kar aur apni study patterns ke baare mein deep gyaan le.
           </div>
         )}
       </div>
 
       {/* History List */}
       <div className="flex justify-between items-center mt-6 mb-2">
-        <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">📜 History Ledger</span>
+        <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">📜 Puraana Hisaab</span>
       </div>
       
       <input 
         type="text" 
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="🔍 Search notes or subjects..." 
+        placeholder="🔍 Search kar apni notes ya subjects ko..." 
         className="w-full bg-black/40 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:border-emerald-500 outline-none mb-4"
       />
 
       <div className="space-y-3">
         {filteredLogs.length === 0 ? (
-          <div className="text-center text-zinc-600 text-sm py-8">No logs found.</div>
+          <div className="text-center text-zinc-600 text-sm py-8">Kuch na mila.</div>
         ) : (
           filteredLogs.map(log => {
             const gradeColor = log.grade === 'A+' ? 'text-emerald-400' : log.grade === 'F' ? 'text-red-400' : 'text-amber-400';

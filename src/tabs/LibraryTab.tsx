@@ -16,7 +16,7 @@ export function LibraryTab() {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.type !== 'application/pdf') {
-      alert("Only PDF files are allowed.");
+      alert("Sirf PDF files allowed hain bhai.");
       return;
     }
 
@@ -32,7 +32,7 @@ export function LibraryTab() {
   };
 
   const handleDelete = async (name: string) => {
-    if (confirm(`Delete ${name}?`)) {
+    if (confirm(`Kya sachi delete kardu ${name} ko?`)) {
       await del(`pdf_${name}`);
       removePdf(name);
       if (selectedPdf === name) setSelectedPdf(null);
@@ -54,7 +54,7 @@ export function LibraryTab() {
       const reply = await analyzePdf(base64Data, userMsg);
       setChatHistory(prev => [...prev, { role: 'ai', text: reply }]);
     } catch (e) {
-      setChatHistory(prev => [...prev, { role: 'ai', text: "Failed to analyze document. Ensure it's a valid PDF." }]);
+      setChatHistory(prev => [...prev, { role: 'ai', text: "Document nahi samajh paya. Dekh lena sahi PDF hai ya nahi." }]);
     } finally {
       setIsChatLoading(false);
     }
@@ -76,7 +76,7 @@ export function LibraryTab() {
         <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
           {chatHistory.length === 0 && (
             <div className="text-center text-zinc-500 text-sm mt-10 italic">
-              "Ask me anything about this text. I shall reveal its depths." - Dante
+              "Is kitaab ke bare mein kuch bhi pooch le. Main iski gehraiyan dikhaunga." - Dante
             </div>
           )}
           {chatHistory.map((msg, i) => (
@@ -93,7 +93,7 @@ export function LibraryTab() {
           {isChatLoading && (
             <div className="flex justify-start">
               <div className="bg-zinc-800 text-zinc-400 rounded-2xl rounded-tl-sm p-3 text-sm border border-zinc-700 animate-pulse">
-                Dante is reading...
+                Dante padh raha hai...
               </div>
             </div>
           )}
@@ -105,7 +105,7 @@ export function LibraryTab() {
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleChat()}
-            placeholder="Ask Dante about this PDF..." 
+            placeholder="Dante se is PDF ke baare me pooch..." 
             className="flex-1 bg-black/40 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:border-fuchsia-500 outline-none"
           />
           <button 
@@ -113,7 +113,7 @@ export function LibraryTab() {
             disabled={isChatLoading || !chatInput.trim()}
             className="bg-fuchsia-600 text-white px-4 py-3 rounded-xl text-sm font-bold hover:bg-fuchsia-500 transition-colors disabled:opacity-50"
           >
-            Send
+            Bhej De
           </button>
         </div>
       </div>
@@ -126,20 +126,20 @@ export function LibraryTab() {
         <div className="w-16 h-16 bg-fuchsia-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-fuchsia-500/30">
           <BookOpen size={28} className="text-fuchsia-400" />
         </div>
-        <h2 className="text-lg font-bold text-white mb-2">Dante's Library</h2>
-        <p className="text-xs text-zinc-400 mb-6">Upload your study materials (PDFs) and let Dante guide you through the chapters.</p>
+        <h2 className="text-lg font-bold text-white mb-2">Dante Ki Kitaabein</h2>
+        <p className="text-xs text-zinc-400 mb-6">Apni padhai ka saaman yahan chadha aur Dante ko tujhe guide karne de.</p>
         
         <label className="bg-fuchsia-600 hover:bg-fuchsia-500 text-white px-6 py-3 rounded-xl font-bold text-sm cursor-pointer inline-flex items-center gap-2 transition-colors shadow-[0_0_15px_rgba(213,0,249,0.3)]">
-          <Upload size={18} /> Upload PDF
+          <Upload size={18} /> PDF Upload Kar
           <input type="file" accept="application/pdf" className="hidden" onChange={handleFileUpload} />
         </label>
       </div>
 
       <div className="space-y-3">
-        <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-widest px-2">Your Documents</h3>
+        <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-widest px-2">Teri Kitaabein</h3>
         {pdfs.length === 0 ? (
           <div className="text-center text-zinc-600 text-sm py-8 bg-black/20 rounded-xl border border-zinc-800/50 border-dashed">
-            No documents uploaded yet.
+            Abhi tak koi PDF upload nahi kiya bhai.
           </div>
         ) : (
           pdfs.map(pdf => (

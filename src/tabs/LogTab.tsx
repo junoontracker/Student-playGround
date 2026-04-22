@@ -31,7 +31,7 @@ export function LogTab() {
       const reply = await breakdownTopic(topicInput);
       setTopicOutput(reply);
     } catch (e) {
-      setTopicOutput("Failed to generate plan.");
+      setTopicOutput("Plan nahi ban paya bhai.");
     } finally {
       setIsTopicLoading(false);
     }
@@ -57,7 +57,7 @@ export function LogTab() {
   };
 
   const handleSave = () => {
-    if (!date) return alert("Select a date!");
+    if (!date) return alert("Date select kar bhai!");
 
     let gainedXp = 0;
     let grade = 'F';
@@ -67,7 +67,7 @@ export function LogTab() {
       grade = 'R';
       gainedXp = 5;
     } else {
-      if (!durNum || selectedSubs.length === 0) return alert("Time and Subject required!");
+      if (!durNum || selectedSubs.length === 0) return alert("Time aur Subject dena zaroori hai!");
       
       if (durNum >= 8) { grade = 'A+'; gainedXp = 50; }
       else if (durNum >= 5) { grade = 'B'; gainedXp = 30; }
@@ -91,7 +91,7 @@ export function LogTab() {
     });
 
     updateUser({ xp: Math.max(0, user.xp + gainedXp) });
-    alert(`Saved! +${gainedXp} XP`);
+    alert(`Save ho gaya! +${gainedXp} XP`);
     
     // Reset form
     setDuration('');
@@ -108,14 +108,14 @@ export function LogTab() {
       {/* AI Study Planner */}
       <div className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 shadow-lg">
         <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-          <Sparkles size={14} className="text-fuchsia-400" /> AI Study Planner
+          <Sparkles size={14} className="text-fuchsia-400" /> AI Study Ka Plan
         </div>
         <div className="flex gap-2 mb-2">
           <input 
             type="text" 
             value={topicInput}
             onChange={(e) => setTopicInput(e.target.value)}
-            placeholder="Enter large topic (e.g. World War 2)" 
+            placeholder="Bada topic dal (jaise World War 2)" 
             className="flex-1 bg-black/40 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:border-fuchsia-500 outline-none"
           />
           <button 
@@ -123,7 +123,7 @@ export function LogTab() {
             disabled={isTopicLoading}
             className="bg-fuchsia-600 text-white px-3 py-2 rounded-xl text-sm font-bold hover:bg-fuchsia-500 transition-colors disabled:opacity-50"
           >
-            {isTopicLoading ? '...' : 'Plan'}
+            {isTopicLoading ? '...' : 'Bana Plan'}
           </button>
         </div>
         {topicOutput && (
@@ -135,7 +135,7 @@ export function LogTab() {
 
       {/* Smart Daily Targets */}
       <div className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 shadow-lg">
-        <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3">📝 Smart Daily Targets</div>
+        <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-3">📝 Roj Ke Targets</div>
         <div className="space-y-3">
           {todos.map(todo => (
             <div key={todo.id} className="flex gap-2 items-center">
@@ -162,7 +162,7 @@ export function LogTab() {
 
       {/* Log Entry */}
       <div className="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-4 shadow-lg">
-        <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-4">🚀 Daily Log</div>
+        <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-4">🚀 Aaj Ka Hisab</div>
         
         <div className="flex justify-center gap-6 mb-4 bg-black/30 p-3 rounded-xl">
           {['🔥', '🙂', '😴'].map(m => (
@@ -206,7 +206,7 @@ export function LogTab() {
           </label>
           <label className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border font-bold text-sm cursor-pointer transition-colors ${isRest ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-black/40 border-zinc-700 text-zinc-400'}`}>
             <input type="checkbox" checked={isRest} onChange={(e) => setIsRest(e.target.checked)} className="hidden" />
-            🛌 Rest Day
+            🛌 Aaram Ka Din
           </label>
         </div>
 
@@ -215,14 +215,14 @@ export function LogTab() {
             type="number" 
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
-            placeholder="⏱️ Study Hours (Target: 8h)" 
+            placeholder="⏱️ Padhai Ke Ghante (Target: 8h)" 
             step="0.1"
             className="w-full bg-black/40 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none focus:border-emerald-500"
           />
           <textarea 
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            placeholder="📝 What did you study? Any notes?" 
+            placeholder="📝 Aaj kya padha? Kuch notes likh de." 
             rows={2}
             className="w-full bg-black/40 border border-zinc-700 rounded-xl px-4 py-3 text-white outline-none focus:border-emerald-500 resize-none"
           />
@@ -233,11 +233,11 @@ export function LogTab() {
               onChange={(e) => setBahana(e.target.value)}
               className="w-full bg-red-900/20 border border-red-500/50 rounded-xl px-4 py-3 text-red-400 outline-none font-semibold"
             >
-              <option value="">⚠️ Reason for less study?</option>
-              <option value="Aalas">Laziness [-10 XP]</option>
-              <option value="Phone">Phone Distraction [-20 XP]</option>
-              <option value="Bimar">Sick [No Penalty]</option>
-              <option value="Emergency">Emergency [No Penalty]</option>
+              <option value="">⚠️ Kam padhne ke kya bahaane the?</option>
+              <option value="Aalas">Aalas Aa Gaya [-10 XP]</option>
+              <option value="Phone">Phone Dekh Raha Tha [-20 XP]</option>
+              <option value="Bimar">Bimar Tha [Koyi Penalty Nahi]</option>
+              <option value="Emergency">Emergency Thi [Koyi Penalty Nahi]</option>
             </select>
           )}
         </div>
@@ -248,7 +248,7 @@ export function LogTab() {
             isRest ? 'bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)]' : 'bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.4)]'
           }`}
         >
-          {isRest ? 'Mark Rest Day 🛌' : 'Save Data ✅'}
+          {isRest ? 'Maan Lo Aaram Ka Din 🛌' : 'Data Save Kar ✅'}
         </button>
 
       </div>

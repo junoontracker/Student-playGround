@@ -38,7 +38,7 @@ export function MusicPlayer() {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2 text-fuchsia-400 font-bold text-sm">
           <Music size={16} />
-          <span>Focus Audio</span>
+          <span>Padhai Ka Sangeet</span>
         </div>
         <select 
           className="bg-zinc-800 text-xs text-white rounded p-1 border border-zinc-700 outline-none"
